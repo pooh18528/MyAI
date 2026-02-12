@@ -2,6 +2,9 @@
 
 CLI tool for chatting with Gemini AI and fixing files.
 
+## Created by
+**pooh18528** & **animegirls18528**
+
 ## Installation
 
 ```bash
