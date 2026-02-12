@@ -5,11 +5,11 @@ import readline from "readline";
 import { askAI } from "../lib/ai.js";
 
 import { fixFile } from "../lib/fileEditor.js";
-import { checkApiKey } from "../lib/config.js";
+import { checkApiKey, deleteApiKey } from "../lib/config.js";
 
 console.clear();
 console.log(chalk.cyan(figlet.textSync("MyAI")));
-console.log(chalk.yellow("Type 'exit' to quit\n"));
+console.log(chalk.yellow("Commands: 'exit' to quit | '/fix <file>' to fix code | '/reset' to clear API Key\n"));
 
 await checkApiKey();
 
@@ -23,6 +23,12 @@ rl.prompt();
 
 rl.on("line", async (line) => {
   const text = line.trim();
+
+  // 🗑️ ลบ API Key
+  if (text === "/reset") {
+    deleteApiKey();
+    return;
+  }
   if (text.toLowerCase() === "exit") {
     console.log("Bye 👋");
     process.exit(0);
